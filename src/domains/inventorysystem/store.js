@@ -11,6 +11,12 @@ const products = ref([
     {id: 7, name: 'Koekjes', actualAmount: 1, minimumAmount: 1},
 ]);
 
+// export const defaultProduct = {
+//     name: '',
+//     actualAmount: 1,
+//     minimumAmount: 1,
+// };
+
 // Getters
 export const getAllProducts = computed(() => products.value);
 export const getProductById = id => computed(() => products.value.find(product => product.id == id));

@@ -1,13 +1,13 @@
 <script setup>
-import GroceryForm from '../components/ProductForm.vue';
+import ProductForm from '../components/ProductForm.vue';
 import {ref} from 'vue';
-import {getProductById, updateProduct} from '../store.js';
+import {getAllProducts, getProductById, updateProduct} from '../store.js';
 import {useRoute} from 'vue-router';
 
 const route = useRoute();
-const id = Number(route.params.id);
+const productId = Number(route.params.id);
 
-const grocery = ref({...getProductById(id).value});
+const productToEdit = getProductById(productId);
 
 function saveProduct(updateProduct) {
     updateProduct(updateProduct);
@@ -15,5 +15,5 @@ function saveProduct(updateProduct) {
 </script>
 
 <template>
-    <GroceryForm :product="product" @submit="saveProduct" />
+    <ProductForm :product="productToEdit" @submit="saveProduct" />
 </template>

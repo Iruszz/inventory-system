@@ -7,5 +7,5 @@ const products = getAllProducts;
 
 <template>
     <Nav />
-    <RouterView :products="products" />
+    <RouterView />
 </template>

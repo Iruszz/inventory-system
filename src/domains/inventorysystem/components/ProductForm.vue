@@ -1,28 +1,28 @@
 <script setup>
-import {defineProps, ref, watch} from 'vue';
+import {defineProps, defineEmits, ref, watch} from 'vue';
 
 const props = defineProps({
-    grocery: {
+    product: {
         type: Object,
         required: true,
-        default: () => ({name: '', price: 0, amount: 1}),
+        default: () => ({name: '', price: 0, actualAmount: 1}),
     },
 });
 
 const emit = defineEmits(['submit']);
 
-const localGrocery = ref({...props.grocery});
+const localProduct = ref({...props.product});
 
 watch(
-    () => props.grocery,
-    newGrocery => {
-        localGrocery.value = {...newGrocery};
+    () => props.product,
+    newProduct => {
+        localProduct.value = {...newProduct};
     },
 );
 
-function onSubmit(event) {
-    event.preventDefault();
-    emit('submit', {...localGrocery.value});
+function onSubmit(e) {
+    e.preventDefault();
+    emit('submit', {...localProduct.value});
 }
 </script>
 
@@ -40,7 +40,7 @@ function onSubmit(event) {
                             <input
                                 type="text"
                                 name="name"
-                                v-model="localGrocery.name"
+                                v-model="localProduct.name"
                                 placeholder="Name"
                                 class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                             />
@@ -48,30 +48,30 @@ function onSubmit(event) {
                     </div>
 
                     <div class="col-span-3">
-                        <label for="price" class="block text-sm font-medium text-gray-900">Price</label>
+                        <label for="actualAmount" class="block text-sm font-medium text-gray-900">Amount</label>
                         <div class="mt-2">
                             <input
-                                name="price"
+                                name="actualAmount"
                                 type="number"
-                                v-model.number="localGrocery.price"
-                                placeholder="Price"
-                                class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                            />
-                        </div>
-                    </div>
-
-                    <div class="col-span-3">
-                        <label for="amount" class="block text-sm font-medium text-gray-900">Amount</label>
-                        <div class="mt-2">
-                            <input
-                                name="amount"
-                                type="number"
-                                v-model.number="localGrocery.amount"
+                                v-model.number="localProduct.actualAmount"
                                 placeholder="Amount"
                                 class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                             />
                         </div>
                     </div>
+
+                    <!-- <div class="col-span-3">
+                        <label for="amount" class="block text-sm font-medium text-gray-900">Amount</label>
+                        <div class="mt-2">
+                            <input
+                                name="amount"
+                                type="number"
+                                v-model.number="localProduct.amount"
+                                placeholder="Amount"
+                                class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
+                            />
+                        </div>
+                    </div> -->
                 </div>
                 <div class="mt-6 ml-auto flex justify-end gap-x-6">
                     <button type="button" class="text-sm/6 font-semibold text-gray-900">Cancel</button>

@@ -1,23 +1,24 @@
 <script setup>
 import GroceryForm from '../components/ProductForm.vue';
 import {addProducts} from '../store.js';
-import {ref} from 'vue';
+import {computed, ref} from 'vue';
 import {useRouter} from 'vue-router';
 
-const product = ref({
+const defaultProduct = ref({
     name: '',
-    price: 0,
-    amount: 1,
+    actualAmount: 1,
+    minimumAmount: 1,
 });
 
 const router = useRouter();
 
 function saveProduct(updatedProduct) {
+    updatedProduct.minimumAmount = updatedProduct.actualAmount + 5;
     addProducts(updatedProduct);
     router.push('/');
 }
 </script>
 
 <template>
-    <GroceryForm :product="product" @submit="saveProduct" />
+    <GroceryForm :product="defaultProduct" @submit="saveProduct" />
 </template>
