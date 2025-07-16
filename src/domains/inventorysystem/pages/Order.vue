@@ -5,10 +5,16 @@ import {getAllProducts} from './../store.js';
 const products = getAllProducts;
 
 const toOrder = computed(() => {
-    return products.value.filter(product => product.actualAmount < product.minimumAmount);
+    return products.value.filter(product => product.actualAmount < product.requiredAmount);
 });
 
-console.log('toOrder', toOrder.value);
+// TODO
+// const amountToOrder = computed(() => {
+//     return Math.abs(toOrder.actualAmount - toOrder.requiredAmount);
+// });
+
+// console.log('toOrder.actualAmount', toOrder.actualAmount);
+// console.log('Amount to order', amountToOrder);
 </script>
 
 <template>
@@ -18,13 +24,14 @@ console.log('toOrder', toOrder.value);
             <tbody>
                 <tr>
                     <td><strong>Product</strong></td>
-                    <td><strong>Amount</strong></td>
                     <td><strong>In stock</strong></td>
+                    <td><strong>Required</strong></td>
+                    <td><strong>Amount to order</strong></td>
                 </tr>
                 <tr v-for="(product, index) in toOrder" :key="index">
                     <td>{{ product.name }}</td>
                     <td class="actualAmount">{{ product.actualAmount }}</td>
-                    <td class="minimumAmount">{{ product.minimumAmount }}</td>
+                    <td class="requiredAmount">{{ product.requiredAmount }}</td>
                 </tr>
             </tbody>
         </table>

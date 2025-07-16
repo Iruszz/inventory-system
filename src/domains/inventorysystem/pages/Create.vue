@@ -7,13 +7,13 @@ import {useRouter} from 'vue-router';
 const defaultProduct = ref({
     name: '',
     actualAmount: 1,
-    minimumAmount: 1,
+    requiredAmount: 1,
 });
 
 const router = useRouter();
 
 function saveProduct(updatedProduct) {
-    updatedProduct.minimumAmount = updatedProduct.actualAmount + 5;
+    updatedProduct.requiredAmount = updatedProduct.actualAmount + 5;
     addProducts(updatedProduct);
     router.push('/');
 }

@@ -2,20 +2,14 @@
 import {ref, computed} from 'vue';
 
 const products = ref([
-    {id: 1, name: 'Brood', actualAmount: 1, minimumAmount: 1},
-    {id: 2, name: 'Broccoli', actualAmount: 1, minimumAmount: 1},
-    {id: 3, name: 'Krentebollen', actualAmount: 1, minimumAmount: 1},
-    {id: 4, name: 'Noten', actualAmount: 1, minimumAmount: 1},
-    {id: 5, name: 'Chips', actualAmount: 1, minimumAmount: 1},
-    {id: 6, name: 'Sla', actualAmount: 1, minimumAmount: 1},
-    {id: 7, name: 'Koekjes', actualAmount: 1, minimumAmount: 1},
+    {id: 1, name: 'Brood', actualAmount: 2, requiredAmount: 5},
+    {id: 2, name: 'Broccoli', actualAmount: 6, requiredAmount: 2},
+    {id: 3, name: 'Krentebollen', actualAmount: 2, requiredAmount: 6},
+    {id: 4, name: 'Noten', actualAmount: 4, requiredAmount: 4},
+    {id: 5, name: 'Chips', actualAmount: 2, requiredAmount: 2},
+    {id: 6, name: 'Sla', actualAmount: 1, requiredAmount: 6},
+    {id: 7, name: 'Koekjes', actualAmount: 6, requiredAmount: 7},
 ]);
-
-// export const defaultProduct = {
-//     name: '',
-//     actualAmount: 1,
-//     minimumAmount: 1,
-// };
 
 // Getters
 export const getAllProducts = computed(() => products.value);

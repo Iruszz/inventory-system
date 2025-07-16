@@ -48,7 +48,9 @@ function onSubmit(e) {
                     </div>
 
                     <div class="col-span-3">
-                        <label for="actualAmount" class="block text-sm font-medium text-gray-900">Amount</label>
+                        <label for="actualAmount" class="block text-sm font-medium text-gray-900">
+                            Add stock amount
+                        </label>
                         <div class="mt-2">
                             <input
                                 name="actualAmount"

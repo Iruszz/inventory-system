@@ -5,40 +5,16 @@ import {getAllProducts} from './../store.js';
 const products = getAllProducts;
 
 console.log('products:', products.value);
-
-// watch(
-//     () => products,
-//     newProducts => {
-//         productActualAmount.value = newProducts.map((g, i) => productActualAmount.value[i] ?? 0);
-//     },
-//     {immediate: true},
-// );
-
-// const productTotalCosts = computed(() => {
-//     return products.map((product, i) => {
-//         return product.price * productQuantities.value[i];
-//     });
-// });
-
-// const TotalCosts = computed(() => {
-//     return productTotalCosts.value.reduce((acc, item) => acc + item, 0);
-// });
 </script>
 
 <template>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <title>Product list</title>
-    </head>
     <body>
         <table id="ProductList" class="w-fit m-25 border-collapse">
             <tbody>
                 <tr>
                     <td><strong>Product</strong></td>
-                    <td><strong>Amount</strong></td>
                     <td><strong>In stock</strong></td>
+                    <td><strong>Required</strong></td>
                     <td><strong></strong></td>
                 </tr>
                 <tr v-for="(product, index) in products" :key="product.id">
@@ -51,7 +27,7 @@ console.log('products:', products.value);
                             v-model.number="product.actualAmount"
                         />
                     </td>
-                    <td class="minimumAmount">{{ product.minimumAmount }}</td>
+                    <td class="requiredAmount">{{ product.requiredAmount }}</td>
                     <!-- <td class="productTotalCosts">{{ productTotalCosts[index].toFixed(2) }}</td> -->
                     <td>
                         <router-link :to="`/edit/${product.id}`" class="text-indigo-600 hover:underline">
