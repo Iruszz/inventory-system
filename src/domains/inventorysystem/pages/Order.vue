@@ -8,13 +8,6 @@ const toOrder = computed(() => {
     return products.value.filter(product => product.actualAmount < product.requiredAmount);
 });
 
-// TODO
-// const amountToOrder = computed(() => {
-//     return Math.abs(toOrder.actualAmount - toOrder.requiredAmount);
-// });
-
-// console.log('toOrder.actualAmount', toOrder.actualAmount);
-// console.log('Amount to order', amountToOrder);
 </script>
 
 <template>
@@ -32,6 +25,7 @@ const toOrder = computed(() => {
                     <td>{{ product.name }}</td>
                     <td class="actualAmount">{{ product.actualAmount }}</td>
                     <td class="requiredAmount">{{ product.requiredAmount }}</td>
+                    <td>{{  product.requiredAmount - product.actualAmount }}</td>
                 </tr>
             </tbody>
         </table>
