@@ -10,6 +10,7 @@ const productId = Number(route.params.id);
 const productToEdit = getProductById(productId);
 
 function saveProduct(updateProduct) {
+    // TODO: onderstaande regel geeft error, zoek uit waarom en verbeter fout
     updateProduct(updateProduct);
 }
 </script>

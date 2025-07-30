@@ -20,6 +20,7 @@ console.log('products:', products.value);
                 <tr v-for="(product, index) in products" :key="product.id">
                     <td>{{ product.name }}</td>
                     <td>
+                        <!-- TODO: computed properties zijn read-only, los dit (v-model) op een andere manier op -->
                         <input
                             class="productActualAmount"
                             type="number"
@@ -28,6 +29,7 @@ console.log('products:', products.value);
                         />
                     </td>
                     <td class="requiredAmount">{{ product.requiredAmount }}</td>
+                    <!-- TODO: ongebruikte comments verwijderen -->
                     <!-- <td class="productTotalCosts">{{ productTotalCosts[index].toFixed(2) }}</td> -->
                     <td>
                         <router-link :to="`/edit/${product.id}`" class="text-indigo-600 hover:underline">

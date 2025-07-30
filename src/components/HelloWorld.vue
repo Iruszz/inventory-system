@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
+// TODO: ongebruikte componenten verwijderen
 defineProps<{ msg: string }>()
 
 const count = ref(0)

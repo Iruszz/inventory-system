@@ -3,6 +3,7 @@ import Create from './pages/Create.vue';
 import Edit from './pages/Edit.vue';
 import Order from './pages/Order.vue';
 
+// TODO: geef routes ook een naam
 const routes = [
     {path: '/', component: Overview},
     {path: '/create', component: Create},

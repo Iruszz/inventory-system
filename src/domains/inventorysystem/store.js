@@ -16,9 +16,11 @@ export const getAllProducts = computed(() => products.value);
 export const getProductById = id => computed(() => products.value.find(product => product.id == id));
 
 // Actions
+// TODO: addProduct is betere naam, want je voegt 1 product per keer toe
 export const addProducts = product => {
     const newId = products.value.reduce((maxId, g) => Math.max(maxId, g.id), 0) + 1;
     products.value.push({...product, id: newId});
 };
 
+// TODO: onderstaande functie update niet, maar voegt toe
 export const updateProduct = product => products.value.push(product);

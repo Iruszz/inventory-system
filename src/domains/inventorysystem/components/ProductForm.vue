@@ -13,6 +13,7 @@ const emit = defineEmits(['submit']);
 
 const localProduct = ref({...props.product});
 
+// TODO: is hier per se een watch voor nodig? zoek uit of dit zonder watch kan
 watch(
     () => props.product,
     newProduct => {
