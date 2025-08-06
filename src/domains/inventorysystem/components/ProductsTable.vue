@@ -29,18 +29,10 @@ console.log('products:', products.value);
                         />
                     </td>
                     <td class="requiredAmount">{{ product.requiredAmount }}</td>
-                    <!-- TODO: ongebruikte comments verwijderen -->
-                    <!-- <td class="productTotalCosts">{{ productTotalCosts[index].toFixed(2) }}</td> -->
                     <td>
                         <router-link :to="`/edit/${product.id}`" class="text-indigo-600 hover:underline">
                             Edit
                         </router-link>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3"><strong>Totaal</strong></td>
-                    <td id="totalCost" colspan="2">
-                        <!-- <strong>{{ TotalCosts.toFixed(2) }}</strong> -->
                     </td>
                 </tr>
             </tbody>

@@ -13,14 +13,6 @@ const emit = defineEmits(['submit']);
 
 const localProduct = ref({...props.product});
 
-// TODO: is hier per se een watch voor nodig? zoek uit of dit zonder watch kan
-watch(
-    () => props.product,
-    newProduct => {
-        localProduct.value = {...newProduct};
-    },
-);
-
 function onSubmit(e) {
     e.preventDefault();
     emit('submit', {...localProduct.value});
@@ -62,19 +54,6 @@ function onSubmit(e) {
                             />
                         </div>
                     </div>
-
-                    <!-- <div class="col-span-3">
-                        <label for="amount" class="block text-sm font-medium text-gray-900">Amount</label>
-                        <div class="mt-2">
-                            <input
-                                name="amount"
-                                type="number"
-                                v-model.number="localProduct.amount"
-                                placeholder="Amount"
-                                class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
-                            />
-                        </div>
-                    </div> -->
                 </div>
                 <div class="mt-6 ml-auto flex justify-end gap-x-6">
                     <button type="button" class="text-sm/6 font-semibold text-gray-900">Cancel</button>
