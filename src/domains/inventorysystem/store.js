@@ -11,6 +11,7 @@ const products = ref([
     {id: 7, name: 'Koekjes', actualAmount: 6, requiredAmount: 7},
 ]);
 
+
 // Getters
 export const getAllProducts = computed(() => products.value);
 export const getProductById = id => computed(() => products.value.find(product => product.id == id));
@@ -22,4 +23,25 @@ export const addProduct = product => {
 };
 
 // TODO: onderstaande functie update niet, maar voegt toe
-export const updateProduct = product => products.value.push(product);
+export const updateProduct = (product) => {
+    const itemToUpdate = products.value.find(item => item.id === product.id);
+
+    // products.value.splice()
+    // const updatedProduct = Object.assign(product, {name : product.name, actualAmount : product.actualAmount});
+    // const updatedProduct = {...product, ...{ name : product.name, actualAmount : product.actualAmount }};
+    // console.log('updatedProduct,', updatedProduct);
+
+
+    // const itemToUpdateArray = Object.values(itemToUpdate);
+    // console.log('itemToUpdateArray,', itemToUpdateArray);
+    // console.log('Product actualAmount,', product.actualAmount);
+    console.log(products.value);
+    console.log('itemToUpdate,', itemToUpdate);
+    const index = products.value.findIndex(x => x.id === product.id);
+    console.log('itemToUpdate,', itemToUpdate);
+    console.log('index,', index);
+    const updatedProduct = product.value.splice(index, 1, itemToUpdate);
+    console.log('updatedProduct,', updatedProduct);
+    // const updatedProduct = updateProduct.splice(4, 1, product.actualAmount);
+    // console.log('updatedProduct,', updatedProduct);
+}

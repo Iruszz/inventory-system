@@ -13,9 +13,8 @@ const emit = defineEmits(['submit']);
 
 const localProduct = ref({...props.product});
 
-function onSubmit(e) {
-    e.preventDefault();
-    emit('submit', {...localProduct.value});
+function onSubmit() {
+    emit('submit', localProduct.value);
 }
 </script>
 
@@ -25,7 +24,7 @@ function onSubmit(e) {
             <div class="">
                 <h1>Create a grocery</h1>
             </div>
-            <form @submit="onSubmit" class="">
+            <form @submit.prevent="onSubmit" class="">
                 <div class="grid grid-cols-1 pl-15 pr-50 gap-y-8 border-b border-gray-900/10 pb-12 -mx-10">
                     <div class="col-span-3">
                         <label for="first-name" class="block text-sm font-medium text-gray-900">Name</label>
