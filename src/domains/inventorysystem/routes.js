@@ -5,10 +5,10 @@ import Order from './pages/Order.vue';
 
 // TODO: geef routes ook een naam
 const routes = [
-    {path: '/', component: Overview},
-    {path: '/create', component: Create},
-    {path: '/edit/:id', component: Edit},
-    {path: '/order', component: Order},
+    {path: '/', component: Overview, name: 'overview'},
+    {path: '/create', component: Create, name: 'create'},
+    {path: '/edit/:id', component: Edit, name: 'edit'},
+    {path: '/order', component: Order, name: 'order'},
 ];
 
 export default routes;

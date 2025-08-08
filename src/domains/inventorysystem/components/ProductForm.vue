@@ -1,5 +1,6 @@
 <script setup>
-import {defineProps, defineEmits, ref, watch} from 'vue';
+import {defineProps, defineEmits, ref, computed} from 'vue';
+import {useRoute} from 'vue-router';
 
 const props = defineProps({
     product: {
@@ -7,6 +8,18 @@ const props = defineProps({
         required: true,
         default: () => ({name: '', price: 0, actualAmount: 1}),
     },
+});
+
+const route = useRoute();
+
+const title = computed(() => {
+    if (route.name === 'create') {
+        return 'Create a grocery';
+    } else if (route.name === 'edit') {
+        return 'Edit a grocery';
+    } else {
+        return 'Grocery';
+    }
 });
 
 const emit = defineEmits(['submit']);
@@ -22,7 +35,7 @@ function onSubmit() {
     <div class="flex justify-center w-full px-4 py-20">
         <div class="w-full max-w-xl px-15 space-y-8">
             <div class="">
-                <h1>Create a grocery</h1>
+                <h1>{{ title }}</h1>
             </div>
             <form @submit.prevent="onSubmit" class="">
                 <div class="grid grid-cols-1 pl-15 pr-50 gap-y-8 border-b border-gray-900/10 pb-12 -mx-10">

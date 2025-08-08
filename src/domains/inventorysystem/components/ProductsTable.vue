@@ -1,10 +1,13 @@
 <script setup>
 import {ref, computed, watch} from 'vue';
 import {getAllProducts} from './../store.js';
+import {updateProduct} from './../store.js';
 
 const products = getAllProducts;
 
-console.log('products:', products.value);
+function updateAmount(product, newAmount) {
+    updateProduct({...product, actualAmount: Number(newAmount)});
+}
 </script>
 
 <template>
@@ -25,7 +28,8 @@ console.log('products:', products.value);
                             class="productActualAmount"
                             type="number"
                             min="0"
-                            v-model.number="product.actualAmount"
+                            :value="product.actualAmount"
+                            @input="e => updateAmount(product, e.target.value)"
                         />
                     </td>
                     <td class="requiredAmount">{{ product.requiredAmount }}</td>
